@@ -2,6 +2,7 @@ package zhan.jpa.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -45,6 +46,16 @@ public interface UsersDaoExtendsRepository extends Repository<Users, Integer> {
 	
 	
 	
+	@Query(value = "update Users set userage = ?1 where userid = ?2")
+	@Modifying
+	void updateUserageByUserid(Integer userage, Integer userid);
 	
+	@Query(value = "delete from tb_users where userid = ?", nativeQuery = true)
+	@Modifying
+	void deleteUserByUserid(Integer userid);
+	
+	@Query(value = "insert into tb_users (username, userage) values (?, ?)", nativeQuery = true)
+	@Modifying
+	void insertUser(String username, Integer userage);
 
 }

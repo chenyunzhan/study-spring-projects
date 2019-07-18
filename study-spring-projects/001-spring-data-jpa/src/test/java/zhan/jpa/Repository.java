@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import zhan.jpa.dao.UsersDaoExtendsRepository;
 import zhan.jpa.pojo.Users;
@@ -20,6 +21,7 @@ public class Repository {
 	private UsersDaoExtendsRepository usersDao;
 	
 	@Test
+	@Transactional
 	public void testFindByUsernameIs() {
 		List<Users> users = new ArrayList<Users>();
 		users = this.usersDao.findByUsernameIs("黄雅莉");
@@ -39,6 +41,9 @@ public class Repository {
 			System.out.println(u);
 		}
 		
+		this.usersDao.updateUserageByUserid(55, 1);
+		this.usersDao.deleteUserByUserid(1);
+		this.usersDao.insertUser("陈云展", 28);
 		
 		System.err.println(this.usersDao);
 		System.err.println(this.usersDao.getClass().getSimpleName());
