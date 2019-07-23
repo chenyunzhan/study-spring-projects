@@ -2,11 +2,14 @@ package zhan.jpa.pojo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +26,24 @@ public class Users implements Serializable {
 	private Integer userage;
 	
 	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="roles_id")
+	private Roles roles;
 	
 	
 	
+	
+	
+	public Roles getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
+	}
+
+
 	public Users() {
 		super();
 	}
@@ -39,6 +57,15 @@ public class Users implements Serializable {
 	}
 	
 	
+	public Users(Integer userid, String username, Integer userage, Roles roles) {
+		super();
+		this.userid = userid;
+		this.username = username;
+		this.userage = userage;
+		this.roles = roles;
+	}
+
+
 	public Integer getUserid() {
 		return userid;
 	}
@@ -60,7 +87,7 @@ public class Users implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Users [userid=" + userid + ", username=" + username + ", userage=" + userage + "]";
+		return "Users [userid=" + userid + ", username=" + username + ", userage=" + userage + ", roles=" + roles + "]";
 	}
 	
 	
