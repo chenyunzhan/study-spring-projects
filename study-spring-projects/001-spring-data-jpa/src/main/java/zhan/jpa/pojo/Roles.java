@@ -1,10 +1,13 @@
 package zhan.jpa.pojo;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,8 +20,11 @@ public class Roles {
 	@Column(name="roleid")
 	private Integer roleid;
 	
-	@OneToOne(mappedBy = "roles")
-	private Users users;
+//	@OneToOne(mappedBy = "roles")
+//	private Users users;
+	
+	@OneToMany(mappedBy = "roles")
+	private Set<Users> users;
 
 	public Integer getRoleid() {
 		return roleid;
@@ -28,11 +34,13 @@ public class Roles {
 		this.roleid = roleid;
 	}
 
-	public Users getUsers() {
+
+
+	public Set<Users> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Users users) {
+	public void setUsers(Set<Users> users) {
 		this.users = users;
 	}
 
