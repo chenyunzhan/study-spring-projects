@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-@WebServlet(urlPatterns = {"/first"})
-public class FirtServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/third"})
+public class ThirdServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +23,7 @@ public class FirtServlet extends HttpServlet {
 		this.singletonService.printServiceMethod();
 		
 		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().println("<h1>你爱不爱我？</h1>");
+		response.getWriter().println("<h1>我</h1>");
 		response.getWriter().println(this.singletonService);
 	}
 	

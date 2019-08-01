@@ -15,7 +15,7 @@ public class SecondServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -25,6 +25,7 @@ public class SecondServlet extends HttpServlet {
 		logger.error("error==============="+response.getContentType());
 		logger.trace("trace====================="+response.getContentType());
 		response.getWriter().println("<h1>你爱不爱我？？？？？？？？？？？？？？</h1>");
+
 	}
 	
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/{url}(url=${action})}">
+		姓名<input name="name" type="text" th:value="${user.name}"><br>
+		年龄<input name="age" type="text" th:value="${user.age}"><br>
+		性别<input name="sex" type="text" th:value="${user.sex}"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
